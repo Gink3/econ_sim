@@ -19,10 +19,15 @@ impl Sim {
             traders: Vec::new(),
         }
     }
-    pub fn create_trader(&mut self) {
+    pub fn init(&mut self) {
+        for x in 0..100 {
+            self.create_trader();
+        }
+    }
+    fn create_trader(&mut self) {
         let mut rng = thread_rng();
         let x = rng.gen_range(30..80);
-        let mut t: Trader = Trader::new(x);
+        let t: Trader = Trader::new(x);
 
 
         self.traders.push(t);
