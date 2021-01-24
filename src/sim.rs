@@ -20,7 +20,7 @@ impl Sim {
         }
     }
     pub fn init(&mut self) {
-        for x in 0..100 {
+        for x in 0..2 {
             self.create_trader();
         }
     }
@@ -28,7 +28,6 @@ impl Sim {
         let mut rng = thread_rng();
         let x = rng.gen_range(30..80);
         let t: Trader = Trader::new(x);
-
 
         self.traders.push(t);
     }
