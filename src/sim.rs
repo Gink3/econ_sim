@@ -20,7 +20,7 @@ impl Sim {
         }
     }
     pub fn init(&mut self) {
-        for x in 0..2 {
+        for _x in 0..20 {
             self.create_trader();
         }
     }

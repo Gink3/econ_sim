@@ -1,17 +1,19 @@
 use rand::prelude::*;
 
 use std::fs::File;
-use std::io::{self, BufRead};
+use std::io::BufRead;
 use std::path::Path;
 
 use std::io::BufReader;
 use std::io::Error;
+
 
 #[derive(Debug)]
 pub struct Trader {
     age: u8,
     first: String,
     last: String,
+
 } 
 
 fn get_line_at(path: &Path, line_num: usize) -> Result<String, Error> {
@@ -29,18 +31,30 @@ impl Trader {
             last: String::new(),
         };
         t.select_first();
+        t.select_last();
 
         t
     }
     fn select_first(&mut self) {
         let mut rng = thread_rng();
-        let r: u32 = rng.gen_range(0..164385);
+        let r: u32 = rng.gen_range(0..4946);
         let p = Path::new("assets/first-names.txt");
         let line = get_line_at(p, r as usize);
 
         let name = line.unwrap();
 
         self.first = name;
+
+    }
+    fn select_last(&mut self) {
+        let mut rng = thread_rng();
+        let r: u32 = rng.gen_range(0..88800);
+        let p = Path::new("assets/last-names.txt");
+        let line = get_line_at(p, r as usize);
+
+        let name = line.unwrap();
+
+        self.last = name;
 
     }
     
