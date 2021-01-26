@@ -7,13 +7,15 @@ use std::path::Path;
 use std::io::BufReader;
 use std::io::Error;
 
+use std::collections::HashMap;
 
 #[derive(Debug)]
 pub struct Trader {
     age: u8,
     first: String,
     last: String,
-
+    bank: HashMap,
+    holdings: HashMap,
 } 
 
 fn get_line_at(path: &Path, line_num: usize) -> Result<String, Error> {
