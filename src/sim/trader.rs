@@ -10,12 +10,12 @@ use std::io::Error;
 use std::collections::HashMap;
 
 #[derive(Debug)]
-pub struct Trader {
+pub struct Trader<'a> {
     age: u8,
     first: String,
     last: String,
-    bank: HashMap,
-    holdings: HashMap,
+    bank: HashMap<&'a str, i64>,
+    holdings: HashMap<&'a str, i64>,
 } 
 
 fn get_line_at(path: &Path, line_num: usize) -> Result<String, Error> {
@@ -25,12 +25,14 @@ fn get_line_at(path: &Path, line_num: usize) -> Result<String, Error> {
     lines.nth(line_num).expect("No line found at that position")
 }
 
-impl Trader {
-    pub fn new(a: u8) -> Trader {
+impl<'a> Trader<'a> {
+    pub fn new(a: u8) -> Trader<'a> {
         let mut t = Trader {
             age: a,
             first: String::new(),
             last: String::new(),
+            bank: HashMap::new(),
+            holdings: HashMap::new(),
         };
         t.select_first();
         t.select_last();

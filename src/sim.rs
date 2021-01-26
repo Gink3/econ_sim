@@ -4,16 +4,16 @@ mod trader;
 use crate::sim::trader::Trader;
 
 #[derive(Debug)]
-pub struct Sim {
+pub struct Sim<'a> {
     //Statistics of the simulation
     avg_age: u8,
-    traders: Vec<Trader>,
+    traders: Vec<Trader<'a>>,
 
 
 }
 
-impl Sim {
-    pub fn new() -> Sim {
+impl<'a> Sim<'a> {
+    pub fn new() -> Sim<'static> {
         Sim {
             avg_age: 0,
             traders: Vec::new(),
