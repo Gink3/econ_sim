@@ -34,10 +34,13 @@ impl<'a> Trader<'a> {
             bank: HashMap::new(),
             holdings: HashMap::new(),
         };
-        t.select_first();
-        t.select_last();
-
+        t.init();
         t
+    }
+    fn init(&mut self) {
+        self.select_first();
+        self.select_last();
+        
     }
     fn select_first(&mut self) {
         let mut rng = thread_rng();
