@@ -31,6 +31,7 @@ impl<'a> Sim<'a> {
 
         self.traders.push(t);
     }
+    
 }
 
 #[cfg(test)]

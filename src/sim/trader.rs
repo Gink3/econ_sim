@@ -40,7 +40,7 @@ impl<'a> Trader<'a> {
     fn init(&mut self) {
         self.select_first();
         self.select_last();
-        
+        self.bank.insert("USD",1000);
     }
     fn select_first(&mut self) {
         let mut rng = thread_rng();
