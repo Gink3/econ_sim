@@ -37,6 +37,16 @@ impl<'a> Trader<'a> {
         t.init();
         t
     }
+    pub fn get_account_value(&mut self,s: &'a str) -> i64 {
+        let v = self.bank.get(s);
+        *v.unwrap()
+    }
+    pub fn get_name(&mut self) -> String {
+        let name = &mut self.first;
+        name.push_str(" ");
+        name.push_str(&mut self.last);
+        name.to_string()
+    }
     fn init(&mut self) {
         self.select_first();
         self.select_last();
@@ -64,10 +74,8 @@ impl<'a> Trader<'a> {
         self.last = name;
 
     }
-    pub fn get_account_value(&mut self,s: &'a str) -> i64 {
-        let v = self.bank.get(s);
-        *v.unwrap()
-    }
+    
+    
     
 }
 
@@ -75,6 +83,13 @@ impl<'a> Trader<'a> {
 mod tests {
     #[warn(unused_imports)]
     use super::*;
+
+    #[test]
+    fn has_name() {
+        let mut t = Trader::new(20);
+        let n = t.get_name();
+        assert!(!n.trim().is_empty());
+    }
     
     #[test]
     fn test_get_account_value() {

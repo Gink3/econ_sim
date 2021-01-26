@@ -35,6 +35,5 @@ impl<'a> Sim<'a> {
 
 #[cfg(test)]
 mod tests {
-    #[warn(unused_imports)]
     use super::*;
 }
