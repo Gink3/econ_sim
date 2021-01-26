@@ -31,10 +31,10 @@ impl<'a> Sim<'a> {
 
         self.traders.push(t);
     }
-    
 }
 
 #[cfg(test)]
 mod tests {
+    #[warn(unused_imports)]
     use super::*;
 }

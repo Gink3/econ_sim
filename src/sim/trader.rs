@@ -64,10 +64,22 @@ impl<'a> Trader<'a> {
         self.last = name;
 
     }
+    pub fn get_account_value(&mut self,s: &'a str) -> i64 {
+        let v = self.bank.get(s);
+        *v.unwrap()
+    }
     
 }
 
 #[cfg(test)]
 mod tests {
+    #[warn(unused_imports)]
     use super::*;
+    
+    #[test]
+    fn test_get_account_value() {
+        let mut t = Trader::new(20);
+        assert_eq!(t.get_account_value("USD",),1000);
+    }
+
 }
