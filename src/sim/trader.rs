@@ -18,6 +18,7 @@ pub struct Trader<'a> {
     holdings: HashMap<&'a str, i64>,
 } 
 
+// Private function for reading specified line of a file
 fn get_line_at(path: &Path, line_num: usize) -> Result<String, Error> {
     let file = File::open(path).expect("File not found or cannot be opened");
     let content = BufReader::new(&file);
