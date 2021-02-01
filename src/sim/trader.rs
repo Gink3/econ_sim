@@ -11,7 +11,7 @@ use std::collections::HashMap;
 
 #[derive(Debug)]
 pub struct Trader<'a> {
-    tid: u16,
+    tid: usize,
     age: u8,
     first: String,
     last: String,
@@ -28,7 +28,7 @@ fn get_line_at(path: &Path, line_num: usize) -> Result<String, Error> {
 }
 
 impl<'a> Trader<'a> {
-    pub fn new(t: u16,a: u8) -> Trader<'a> {
+    pub fn new(t: usize,a: u8) -> Trader<'a> {
         let mut t = Trader {
             tid: t,
             age: a,
@@ -40,7 +40,6 @@ impl<'a> Trader<'a> {
         t.init();
         t
     }
-
 
     pub fn get_account_value(&mut self,s: &'a str) -> i64 {
         let v = self.bank.get(s);
