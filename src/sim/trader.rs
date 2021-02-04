@@ -40,8 +40,11 @@ impl<'a> Trader<'a> {
         t.init();
         t
     }
-
+    //returns account value of a given currency
     pub fn get_account_value(&mut self,s: &'a str) -> i64 {
+        // TODO 
+        // Add handling if currency not found
+        // Add test for both success and failure
         let v = self.bank.get(s);
         *v.unwrap()
     }
@@ -53,11 +56,18 @@ impl<'a> Trader<'a> {
         name.push_str(&mut self.last);
         name.to_string()
     }
+    // Passing a currency name as a string 
+    // Adds currency pair initialized to 0
+    pub fn add_currency(&mut self, c: &'a str) {
+        self.bank.insert(c,0);
+    }
+    // initialization finction that gives names and starting currency
     fn init(&mut self) {
         self.select_first();
         self.select_last();
         self.bank.insert("USD",1000);
     }
+    // Chooses first name from name file
     fn select_first(&mut self) {
         let mut rng = thread_rng();
         let r: u32 = rng.gen_range(0..4946);
@@ -69,6 +79,7 @@ impl<'a> Trader<'a> {
         self.first = name;
 
     }
+    // Chooses last name from name file
     fn select_last(&mut self) {
         let mut rng = thread_rng();
         let r: u32 = rng.gen_range(0..88800);
