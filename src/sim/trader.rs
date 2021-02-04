@@ -46,7 +46,11 @@ impl<'a> Trader<'a> {
         // Add handling if currency not found
         // Add test for both success and failure
         let v = self.bank.get(s);
-        *v.unwrap()
+        if v.is_none() {
+            return 0;
+        } else {
+            *v.unwrap()
+        }
     }
 
     // Returns full name for trader object
@@ -103,15 +107,21 @@ mod tests {
 
     #[test]
     fn has_name() {
-        let mut t = Trader::new(20);
+        let mut t = Trader::new(1,20);
         let n = t.get_name();
         assert!(!n.trim().is_empty());
     }
     
     #[test]
     fn test_get_account_value() {
-        let mut t = Trader::new(20);
-        assert_eq!(t.get_account_value("USD",),1000);
+        let mut t = Trader::new(1,20);
+        assert_eq!(t.get_account_value("USD"),1000);
+    }
+
+    #[test]
+    fn test_bad_get_account() {
+        let mut t = Trader::new(1,20);
+        assert_eq!(t.get_account_value("EUR"),0)
     }
 
 }
