@@ -124,4 +124,10 @@ mod tests {
         assert_eq!(t.get_account_value("EUR"),0)
     }
 
+    #[test]
+    fn test_add_currency() {
+        let mut t = Trader::new(1,20);
+        t.add_currency("EUR");
+        assert_eq!(t.get_account_value("EUR"),0);
+    }
 }
