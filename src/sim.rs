@@ -8,7 +8,7 @@ pub struct Sim<'a> {
     //Statistics of the simulation
     next_tid: usize,
     num_traders: usize,
-    avg_age: u8,
+    avg_age: u64,
     traders: Vec<Trader<'a>>,
 
 
@@ -22,6 +22,12 @@ impl<'a> Sim<'a> {
             avg_age: 0,
             traders: Vec::new(),
         }
+    }
+    // calculates and prints out simulation statistics
+    pub fn end_sim(&mut self) {
+        self.cal_avg_age();
+        println!("Average Age: {}", self.avg_age);
+        
     }
     pub fn init(&mut self) {
         for _x in 0..20 {
@@ -37,6 +43,15 @@ impl<'a> Sim<'a> {
 
         self.traders.push(t);
     }
+    fn cal_avg_age(&mut self) {
+        let mut sum: u64 = 0;
+        for t in &self.traders {
+            sum = sum + u64::from(t.age);
+        }
+        sum = sum / self.traders.len() as u64;
+        self.avg_age = sum;
+    }
+
 }
 
 #[cfg(test)]

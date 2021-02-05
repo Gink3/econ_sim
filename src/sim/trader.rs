@@ -12,7 +12,7 @@ use std::collections::HashMap;
 #[derive(Debug)]
 pub struct Trader<'a> {
     tid: usize,
-    age: u8,
+    pub age: u8,
     first: String,
     last: String,
     bank: HashMap<&'a str, i64>,
@@ -52,7 +52,9 @@ impl<'a> Trader<'a> {
             *v.unwrap()
         }
     }
-
+    pub fn get_age(self) -> u8 {
+        self.age
+    }
     // Returns full name for trader object
     pub fn get_name(&mut self) -> String {
         let name = &mut self.first;
