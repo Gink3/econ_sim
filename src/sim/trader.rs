@@ -9,6 +9,7 @@ use std::io::Error;
 
 use std::collections::HashMap;
 
+
 #[derive(Debug)]
 pub struct Trader<'a> {
     tid: usize,
