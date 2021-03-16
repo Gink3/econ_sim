@@ -1,5 +1,8 @@
 use rand::prelude::*;
 
+mod producer;
+use crate::sim::producer::Producer;
+
 mod trader;
 use crate::sim::trader::Trader;
 
@@ -10,7 +13,7 @@ pub struct Sim<'a> {
     num_traders: usize,
     avg_age: u64,
     traders: Vec<Trader<'a>>,
-
+    prods: Vec<Producer<'a>>,
 
 }
 
@@ -21,6 +24,7 @@ impl<'a> Sim<'a> {
             num_traders: 0,
             avg_age: 0,
             traders: Vec::new(),
+            prods: Vec::new(),
         }
     }
     // calculates and prints out simulation statistics

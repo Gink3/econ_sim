@@ -21,6 +21,8 @@
 * Producer Value - ((products/day) * price) * attitude
 
 ## Classes
+* Sim
+    * Simulation Controller Class
 * Trader(Merchant)
     * trader id - unique trader id
     * age - tracks time alive
