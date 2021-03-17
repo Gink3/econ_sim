@@ -13,7 +13,7 @@ use crate::sim::trader::Trader;
 // traders - array that stores trader data
 // prods - array that stores production data
 // avg_age - end of simulation metric
-// 
+// land - generated from a sim config file
 #[derive(Debug)]
 pub struct Sim<'a> {
     //Statistics of the simulation
@@ -49,8 +49,7 @@ impl<'a> Sim<'a> {
         self.num_traders = self.traders.iter().count();
     }
     fn create_trader(&mut self) {
-        let mut rng = thread_rng();
-        let x = rng.gen_range(30..80);
+        let x = 0;
         let t: Trader = Trader::new(self.next_tid,x);
         self.next_tid+=1;
 
