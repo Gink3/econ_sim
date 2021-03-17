@@ -60,7 +60,7 @@ impl<'a> Sim<'a> {
         // Reference https://doc.rust-lang.org/rust-by-example/std_misc/file/open.html
         let path = Path::new(&self.cfg);
 
-        let mut file = File::open(&path).unwrap();
+        let file = File::open(&path).unwrap();
         let reader = BufReader::new(file);
 
         for (index, line) in reader.lines().enumerate() {
