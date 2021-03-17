@@ -21,22 +21,26 @@
 * Producer Value - ((products/day) * price) * attitude
 
 ## Classes
-* Sim
-    * Simulation Controller Class
-    * Land is a randomly generated number that seeds how many consumers(population) are set
-    * Population is a % of land
-    * Needs are a usage rate of products per day
-        * Calculated as (usage rate per day * population) 
-* Trader
+### Sim
+* Simulation Controller Class
+* Land is a randomly generated number that seeds how many consumers(population) are set
+* Population is a % of land
+* Needs are a usage rate of products per day
+    * Calculated as (usage rate per day * population) 
+#### Methods
+### Trader
     * trader id - unique trader id
     * age - tracks time alive
     * first name - string
     * last name - string
     * bank - hash map that tracks currency name and holdings
     * holdings - hashmap that tracks goods and holdings
-* Producer
+#### Methods
+### Producer
     * Has a daily upkeep cost
     * Produces a defined amount of a good each day
+#### Methods
+
 
 ### Trader Behavior
 #### Selling a product
