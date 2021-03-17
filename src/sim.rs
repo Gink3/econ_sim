@@ -65,7 +65,8 @@ impl<'a> Sim<'a> {
 
         for (index, line) in reader.lines().enumerate() {
             let mut line = line.unwrap(); // Ignore errors.
-            println!("{}",index);
+            // Devug print statement
+            //println!("{}",index);
             match index {
                 0 => {
                     line = line.replace("land:", "");
@@ -83,7 +84,7 @@ impl<'a> Sim<'a> {
             }
         }
 
-        for _x in 0..20 {
+        for _x in 0..10 {
             self.create_trader();
         }
         self.num_traders = self.traders.iter().count();

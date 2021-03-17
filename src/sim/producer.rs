@@ -21,10 +21,10 @@ pub struct Producer<'a> {
     pid: usize,
     ptype: u8,
     tid: usize,
-    cost: usize,
-    prod: HashMap<&'a str, i64>,
-    needs: HashMap<&'a str, i64>,
-    holds: HashMap<&'a str, i64>,
+    cost: i64,
+    prod: HashMap<&'a str, u64>,
+    needs: HashMap<&'a str, u64>,
+    holds: HashMap<&'a str, u64>,
 }
 
 impl<'a> Producer<'a> {
@@ -33,7 +33,7 @@ impl<'a> Producer<'a> {
     // t - trader id of owner
     // c - cost
     // holds - current holdings
-    pub fn new(p: usize,t: usize,c: usize) -> Producer<'a> {
+    pub fn new(p: usize,t: usize,c: i64) -> Producer<'a> {
         let mut pro = Producer {
             pid: p,
             ptype: 0,
@@ -54,7 +54,7 @@ impl<'a> Producer<'a> {
 
         // Creates the rng thread and generates our random number
         let mut rng = thread_rng();
-        let r: u32 = rng.gen_range(0..100);
+        let r: u32 = rng.gen_range(0..11);
         // Selection for the production type and sets production rates and needs
         match r {
             0 ..= 11 => {
@@ -70,6 +70,28 @@ impl<'a> Producer<'a> {
             }
         }
     }
+    // Returns Values of product
+    // p - product name as string
+    // returns current value in the producer
+    pub fn check_hold(self,p: &str) -> usize {
+        // if found return value
+        // else return 0
+        if self.holds.contains_key(&p) {
+            *self.holds.get(&p).unwrap() as usize
+        } else {
+            0
+        }
+    }
+    // Trader sends materials to producer
+    // p - product string
+    // am - amount
+    pub fn ship_materials(&mut self,p: &'a str,am: u64) {
+        if self.holds.contains_key(p) {
+            *self.holds.get_mut(p).unwrap() += am;
+        } else {
+            self.holds.insert(p,am);
+        }
+    }
     pub fn get_ptype(self) -> u8 {
         self.ptype
     }
@@ -80,17 +102,16 @@ impl<'a> Producer<'a> {
     pub fn get_tid(self) -> usize {
         self.tid
     }
-    pub fn get_cost(self) -> usize {
+    pub fn get_cost(self) -> i64 {
         self.cost
     }
 
 }
 // Producer error log function
+// Log file found in .\\logs\\producer.log
 // Input
 //      e - string with the message to 
-// 
-//
-//
+
 fn log_error(e: String) {
     // Opens log file to append
     let mut file = OpenOptions::new()
@@ -113,5 +134,17 @@ mod tests {
         assert_eq!(1,p.get_pid());
     }
 
-
+    #[test]
+    fn materials_recieved_not_already_found() {
+        let mut p = Producer::new(1,0,1000);
+        p.ship_materials("Iron",300);
+        assert_eq!(300,p.check_hold("Iron"));
+    }
+    #[test]
+    fn materials_recieved_already_found() {
+        let mut p = Producer::new(1,0,1000);
+        p.ship_materials("Iron",300);
+        p.ship_materials("Iron",300);
+        assert_eq!(600,p.check_hold("Iron"));
+    }
 }
