@@ -9,14 +9,7 @@ use std::io::Error;
 
 use std::collections::HashMap;
 
-// Trader Class
-// tid - trader id
-// age - age in days
-// first - first name as a string
-// last - last name as a string
-// bank - hashmap for currencies and amounts
-// holdings - hashmap for products and amounts
-//
+
 #[derive(Debug)]
 pub struct Trader<'a> {
     tid: usize,
