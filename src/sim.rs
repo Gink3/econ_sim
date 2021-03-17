@@ -6,25 +6,34 @@ use crate::sim::producer::Producer;
 mod trader;
 use crate::sim::trader::Trader;
 
+// Sim Class
+// Controller of the simulation
+// next_tid - tracks next usable trader id
+// num_traders - number of traders in a simulation
+// traders - array that stores trader data
+// prods - array that stores production data
+// avg_age - end of simulation metric
+// 
 #[derive(Debug)]
 pub struct Sim<'a> {
     //Statistics of the simulation
     next_tid: usize,
+    next_pid: usize,
     num_traders: usize,
-    avg_age: u64,
     traders: Vec<Trader<'a>>,
     prods: Vec<Producer<'a>>,
-
+    avg_age: u64,
 }
 
 impl<'a> Sim<'a> {
     pub fn new() -> Sim<'static> {
         Sim {
             next_tid: 0,
+            next_pid: 0,
             num_traders: 0,
-            avg_age: 0,
             traders: Vec::new(),
             prods: Vec::new(),
+            avg_age: 0,
         }
     }
     // calculates and prints out simulation statistics
