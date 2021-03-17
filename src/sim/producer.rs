@@ -33,10 +33,18 @@ impl<'a> Producer<'a> {
             holds: HashMap::new(),
         }
     }
+
+    
     pub fn get_pid(self) -> usize {
         self.pid
     }
 
+    pub fn get_tid(self) -> usize {
+        self.tid
+    }
+    pub fn get_cost(self) -> usize {
+        self.cost
+    }
 
 }
 
