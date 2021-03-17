@@ -16,9 +16,11 @@
 * Goods - Any product or material
 * Retail goods - Products that are only needed by the consumer
 
+
 ## Computations
 * **Note** Each trader has a float from -20 to 20 that controls what they believe it is worth called attitude
 * Producer Value - ((products/day) * price) * attitude
+
 
 ## Classes
 ### Sim
@@ -28,19 +30,27 @@
 * Needs are a usage rate of products per day
     * Calculated as (usage rate per day * population) 
 #### Methods
+* End sim - runs all of the end of simulation metrics calculations
+* create_trader - generates a new trader
+* cal_avg_age - calculates average age of all traders
 ### Trader
-    * trader id - unique trader id
-    * age - tracks time alive
-    * first name - string
-    * last name - string
-    * bank - hash map that tracks currency name and holdings
-    * holdings - hashmap that tracks goods and holdings
+* trader id - unique trader id
+* age - tracks time alive
+* first name - string
+* last name - string
+* bank - hash map that tracks currency name and holdings
+* holdings - hashmap that tracks goods and holdings
 #### Methods
 ### Producer
-    * Has a daily upkeep cost
-    * Produces a defined amount of a good each day
+A producer looks to have enough inventory for a week and throughout the week it will try and refill the inventory
+* Has a daily upkeep cost
+* Produces a defined amount of a good each day
+* Owner tid **Note** producer tid = 0 if owner is consumer at start of simulation
+* Production - hashmap pair
+* Needs - hashmap pair
+* Holdings - current inventory for producer
 #### Methods
-
+* owner change
 
 ### Trader Behavior
 #### Selling a product
@@ -52,6 +62,7 @@
 #### Buying a product
 Consumer acts as a product sink
 Manages needs based on a variable factor of land size
+
 
 ## Algorithms
 1. Randomly Choose land size as square kilometers
