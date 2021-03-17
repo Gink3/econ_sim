@@ -1,4 +1,8 @@
 use rand::prelude::*;
+use std::fs::File;
+use std::io::{self, prelude::*, BufRead, BufReader};
+use std::path::Path;
+
 
 mod producer;
 use crate::sim::producer::Producer;
@@ -8,15 +12,21 @@ use crate::sim::trader::Trader;
 
 // Sim Class
 // Controller of the simulation
+// land - generated from a sim config file
+// poprate - percent of land, determines population
+// tRate - percent of land, determines trader count
 // next_tid - tracks next usable trader id
 // num_traders - number of traders in a simulation
 // traders - array that stores trader data
 // prods - array that stores production data
 // avg_age - end of simulation metric
-// land - generated from a sim config file
 #[derive(Debug)]
 pub struct Sim<'a> {
     //Statistics of the simulation
+    cfg: String,
+    land: usize,
+    prate: usize,
+    trate: usize,
     next_tid: usize,
     next_pid: usize,
     num_traders: usize,
@@ -26,8 +36,12 @@ pub struct Sim<'a> {
 }
 
 impl<'a> Sim<'a> {
-    pub fn new() -> Sim<'static> {
+    pub fn new(cpath: String) -> Sim<'static> {
         Sim {
+            cfg: cpath,
+            land: 0,
+            prate: 0,
+            trate: 0,
             next_tid: 0,
             next_pid: 0,
             num_traders: 0,
@@ -43,6 +57,32 @@ impl<'a> Sim<'a> {
         
     }
     pub fn init(&mut self) {
+        // Reference https://doc.rust-lang.org/rust-by-example/std_misc/file/open.html
+        let path = Path::new(&self.cfg);
+
+        let mut file = File::open(&path).unwrap();
+        let reader = BufReader::new(file);
+
+        for (index, line) in reader.lines().enumerate() {
+            let mut line = line.unwrap(); // Ignore errors.
+            println!("{}",index);
+            match index {
+                0 => {
+                    line = line.replace("land:", "");
+                    self.land = line.parse::<usize>().unwrap();
+                }
+                1 => {
+                    line = line.replace("poprate:","");
+                    self.prate = line.parse::<usize>().unwrap();
+                }
+                2 => {
+                    line = line.replace("traderrate:","");
+                    self.trate = line.parse::<usize>().unwrap();
+                }
+                _ => {}
+            }
+        }
+
         for _x in 0..20 {
             self.create_trader();
         }
@@ -64,10 +104,39 @@ impl<'a> Sim<'a> {
         self.avg_age = sum;
     }
 
+    pub fn get_land(self) -> usize {
+        self.land
+    }
+    pub fn get_prate(self) -> usize {
+        self.prate
+    }
+    pub fn get_trate(self) -> usize {
+        self.trate
+    }
+
 }
 
 #[cfg(test)]
 #[allow(unused_imports)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn reads_land() {
+        let mut s = Sim::new(".\\sim_config\\sample.cfg".to_string());
+        s.init();
+        assert_eq!(10000,s.get_land());
+    }
+    #[test]
+    fn reads_prate() {
+        let mut s = Sim::new(".\\sim_config\\sample.cfg".to_string());
+        s.init();
+        assert_eq!(35,s.get_prate());
+    }
+    #[test]
+    fn reads_trate() {
+        let mut s = Sim::new(".\\sim_config\\sample.cfg".to_string());
+        s.init();
+        assert_eq!(5,s.get_trate());
+    }
 }
