@@ -1,5 +1,8 @@
-
+use rand::prelude::*;
 use std::collections::HashMap;
+use std::fs;
+use std::fs::{File,OpenOptions};
+use std::io::{self, Write};
 
 // Producer Class
 // pid - producer id
@@ -24,16 +27,36 @@ impl<'a> Producer<'a> {
     // c - cost
     // holds - current holdings
     pub fn new(p: usize,t: usize,c: usize) -> Producer<'a> {
-        Producer {
+        let mut p = Producer {
             pid: p,
             tid: t,
             cost: c,
             prod: HashMap::new(),
             needs: HashMap::new(),
             holds: HashMap::new(),
-        }
+        };
+        p.init();
+        p
     }
 
+    fn init(&mut self) {
+        let _r1 = fs::remove_file(".\\logs\\producer.log");
+        let _r2 = File::create(".\\logs\\producer.log");
+        let mut rng = thread_rng();
+        let r: u32 = rng.gen_range(0..100);
+        match r {
+            0 ..= 11 => {
+                self.prod.insert("Steel",20);
+                self.needs.insert("Iron",20);
+                self.needs.insert("Coal",20);
+            },
+            _ => {
+                let mut s = "Prodution Selection r:".to_string();
+                s.push_str(&r.to_string());
+                log_error(s);
+            }
+        }
+    }
     
     pub fn get_pid(self) -> usize {
         self.pid
@@ -46,6 +69,16 @@ impl<'a> Producer<'a> {
         self.cost
     }
 
+}
+
+fn log_error(e: String) {
+    let mut file = OpenOptions::new()
+    .write(true)
+    .append(true)
+    .open(".\\logs\\producer.log")
+    .unwrap();
+
+    writeln!(file, "Error: {}",e).expect("Unable to write to Producer Log");
 }
 
 #[cfg(test)]
