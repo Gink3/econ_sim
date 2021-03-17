@@ -23,6 +23,11 @@
 
 
 ## Classes
+### Class interactions
+Sim acts as a controller for Trader, Producer, Consumer, Market
+Trader owns Producer
+Consumer looks at market and buys from trader
+
 ### Sim
 * Simulation Controller Class
 * Land is a randomly generated number that seeds how many consumers(population) are set
@@ -41,6 +46,7 @@
 * bank - hash map that tracks currency name and holdings
 * holdings - hashmap that tracks goods and holdings
 #### Methods
+
 ### Producer
 A producer looks to have enough inventory for a week and throughout the week it will try and refill the inventory
 * Has a daily upkeep cost
@@ -50,7 +56,13 @@ A producer looks to have enough inventory for a week and throughout the week it 
 * Needs - hashmap pair
 * Holdings - current inventory for producer
 #### Methods
-* owner change
+* Initialization - determines the % of each type of production
+    * Select production type (material harvest or processor)
+    * Set needs according to production selected
+* Owner change
+* Added inventory
+* Check inventory
+
 
 ### Trader Behavior
 #### Selling a product
