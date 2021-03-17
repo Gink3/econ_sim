@@ -30,6 +30,7 @@ pub struct Producer<'a> {
 impl<'a> Producer<'a> {
     // Controller needs to provide p and c
     // p - producer id
+    // t - trader id of owner
     // c - cost
     // holds - current holdings
     pub fn new(p: usize,t: usize,c: usize) -> Producer<'a> {
@@ -47,10 +48,14 @@ impl<'a> Producer<'a> {
     }
 
     fn init(&mut self) {
+        // Clears previous logs
         let _r1 = fs::remove_file(".\\logs\\producer.log");
         let _r2 = File::create(".\\logs\\producer.log");
+
+        // Creates the rng thread and generates our random number
         let mut rng = thread_rng();
         let r: u32 = rng.gen_range(0..100);
+        // Selection for the production type and sets production rates and needs
         match r {
             0 ..= 11 => {
                 self.prod.insert("Steel",20);
@@ -58,6 +63,7 @@ impl<'a> Producer<'a> {
                 self.needs.insert("Coal",20);
             },
             _ => {
+                // Error handling for unknown number
                 let mut s = "Prodution Selection r:".to_string();
                 s.push_str(&r.to_string());
                 log_error(s);
@@ -79,15 +85,21 @@ impl<'a> Producer<'a> {
     }
 
 }
-
+// Producer error log function
+// Input
+//      e - string with the message to 
+// 
+//
+//
 fn log_error(e: String) {
+    // Opens log file to append
     let mut file = OpenOptions::new()
     .write(true)
     .append(true)
     .open(".\\logs\\producer.log")
     .unwrap();
 
-    writeln!(file, "Error: {}",e).expect("Unable to write to Producer Log");
+    writeln!(file, "{}",e).expect("Unable to write to Producer Log");
 }
 
 #[cfg(test)]
