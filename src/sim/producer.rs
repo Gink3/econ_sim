@@ -73,11 +73,11 @@ impl<'a> Producer<'a> {
     // Returns Values of product
     // p - product name as string
     // returns current value in the producer
-    pub fn check_hold(self,p: &str) -> usize {
+    pub fn check_hold(&self,p: &str) -> u64 {
         // if found return value
         // else return 0
         if self.holds.contains_key(&p) {
-            *self.holds.get(&p).unwrap() as usize
+            *self.holds.get(&p).unwrap()
         } else {
             0
         }
@@ -91,6 +91,17 @@ impl<'a> Producer<'a> {
         } else {
             self.holds.insert(p,am);
         }
+    }
+    // Checks needs against current holdings and returns a bool
+    // p - product key
+    // am - amount
+    pub fn daily_check(&self) -> bool {
+        for (p,am) in self.needs.iter() {
+            if self.check_hold(p) <= *am  {
+                return false
+            }
+        }
+        true
     }
     pub fn get_ptype(self) -> u8 {
         self.ptype
@@ -146,5 +157,17 @@ mod tests {
         p.ship_materials("Iron",300);
         p.ship_materials("Iron",300);
         assert_eq!(600,p.check_hold("Iron"));
+    }
+    #[test]
+    fn daily_check_pass() {
+        let mut p = Producer::new(1,0,1000);
+        p.ship_materials("Iron",300);
+        p.ship_materials("Coal",300);
+        assert_eq!(true,p.daily_check());
+    }
+    #[test]
+    fn daily_check_fail() {
+        let p = Producer::new(1,0,1000);
+        assert_eq!(false,p.daily_check());
     }
 }
