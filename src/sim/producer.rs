@@ -6,6 +6,11 @@ use std::io::{self, Write};
 
 // Producer Class
 // pid - producer id
+// ptype - code for different type of good produced
+//      0 - undefined
+//      1 - primary
+//      2 - Intermediate
+//      3 - final
 // tid - trader id of owner
 // cost - cost calculated by the factors of the production from the controller
 // prod - hashmap with product name, amount pairs
@@ -14,6 +19,7 @@ use std::io::{self, Write};
 #[derive(Debug)]
 pub struct Producer<'a> {
     pid: usize,
+    ptype: u8,
     tid: usize,
     cost: usize,
     prod: HashMap<&'a str, i64>,
@@ -27,16 +33,17 @@ impl<'a> Producer<'a> {
     // c - cost
     // holds - current holdings
     pub fn new(p: usize,t: usize,c: usize) -> Producer<'a> {
-        let mut p = Producer {
+        let mut pro = Producer {
             pid: p,
+            ptype: 0,
             tid: t,
             cost: c,
             prod: HashMap::new(),
             needs: HashMap::new(),
             holds: HashMap::new(),
         };
-        p.init();
-        p
+        pro.init();
+        pro
     }
 
     fn init(&mut self) {
@@ -57,7 +64,9 @@ impl<'a> Producer<'a> {
             }
         }
     }
-    
+    pub fn get_ptype(self) -> u8 {
+        self.ptype
+    }
     pub fn get_pid(self) -> usize {
         self.pid
     }
