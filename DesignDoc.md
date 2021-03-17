@@ -9,7 +9,7 @@
 
 
 ## Terms
-* Merchant - Trading entities that control goods and make decisions
+* Trader - Trading entities that control goods and make decisions
 * Producers - Farm or Mine that produces raw materials
 * Factories - Turns raw materials into a intermediate or finished good
 * Consumer - The entity that acts as all consumers in the market
@@ -23,7 +23,11 @@
 ## Classes
 * Sim
     * Simulation Controller Class
-* Trader(Merchant)
+    * Land is a randomly generated number that seeds how many consumers(population) are set
+    * Population is a % of land
+    * Needs are a usage rate of products per day
+        * Calculated as (usage rate per day * population) 
+* Trader
     * trader id - unique trader id
     * age - tracks time alive
     * first name - string
@@ -42,6 +46,8 @@
         * Undercut new_price = (current price - cost) / 4 + current price
     * if being sold already and cost is above 
 #### Buying a product
+Consumer acts as a product sink
+Manages needs based on a variable factor of land size
 
 ## Algorithms
 1. Randomly Choose land size as square kilometers
