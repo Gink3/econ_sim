@@ -42,7 +42,7 @@ impl<'a> Sim<'a> {
             land: 0,
             prate: 0,
             trate: 0,
-            next_tid: 0,
+            next_tid: 1,
             next_pid: 0,
             num_traders: 0,
             traders: Vec::new(),
@@ -85,11 +85,12 @@ impl<'a> Sim<'a> {
         }
 
         for _x in 0..10 {
-            self.create_trader();
+            self.create_traders();
         }
         self.num_traders = self.traders.iter().count();
     }
-    fn create_trader(&mut self) {
+    // Creates the inital vector of traders
+    fn create_traders(&mut self) {
         let x = 0;
         let t: Trader = Trader::new(self.next_tid,x);
         self.next_tid+=1;
@@ -103,6 +104,18 @@ impl<'a> Sim<'a> {
         }
         sum = sum / self.traders.len() as u64;
         self.avg_age = sum;
+    }
+    // Returns the index in the vector of trader
+    // given t - the tid of a given trader
+    // Returns as an Option so you must unwrap
+    // 
+    fn get_index_tid(self, t: usize) -> Option<usize> {
+        for (index, trader) in self.traders.into_iter().enumerate() {
+            if trader.get_tid() == t {
+                return Some(index)
+            }
+        }
+        None
     }
 
     pub fn get_land(self) -> usize {
@@ -139,5 +152,12 @@ mod tests {
         let mut s = Sim::new(".\\sim_config\\sample.cfg".to_string());
         s.init();
         assert_eq!(5,s.get_trate());
+    }
+    // NOTE tid is initially 1 greater than index
+    #[test]
+    fn finds_trader_index() {
+        let mut s = Sim::new(".\\sim_config\\sample.cfg".to_string());
+        s.init();
+        assert_eq!(s.get_index_tid(5).unwrap(), 4);
     }
 }

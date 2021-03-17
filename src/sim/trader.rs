@@ -107,7 +107,9 @@ impl<'a> Trader<'a> {
     }
     
     
-    
+    pub fn get_tid(self) -> usize {
+        self.tid
+    }
 }
 
 #[cfg(test)]
