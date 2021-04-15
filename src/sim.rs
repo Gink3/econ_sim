@@ -2,7 +2,7 @@ use rand::prelude::*;
 use std::fs::File;
 use std::io::{self, prelude::*, BufRead, BufReader};
 use std::path::Path;
-
+use std::collections::HashMap;
 
 mod producer;
 use crate::sim::producer::Producer;
@@ -19,6 +19,7 @@ use crate::sim::trader::Trader;
 // num_traders - number of traders in a simulation
 // traders - array that stores trader data
 // prods - array that stores production data
+// mp - market prices for all goods (item name, price)
 // avg_age - end of simulation metric
 #[derive(Debug)]
 pub struct Sim<'a> {
@@ -32,6 +33,7 @@ pub struct Sim<'a> {
     num_traders: usize,
     traders: Vec<Trader<'a>>,
     prods: Vec<Producer<'a>>,
+    mp: HashMap<&'a str, u64>,
     avg_age: u64,
 }
 
@@ -47,6 +49,7 @@ impl<'a> Sim<'a> {
             num_traders: 0,
             traders: Vec::new(),
             prods: Vec::new(),
+            mp: HashMap::new(),
             avg_age: 0,
         }
     }
@@ -108,7 +111,6 @@ impl<'a> Sim<'a> {
     // Returns the index in the vector of trader
     // given t - the tid of a given trader
     // Returns as an Option so you must unwrap
-    // 
     fn get_index_tid(self, t: usize) -> Option<usize> {
         for (index, trader) in self.traders.into_iter().enumerate() {
             if trader.get_tid() == t {
@@ -116,6 +118,11 @@ impl<'a> Sim<'a> {
             }
         }
         None
+    }
+    // Main function of this class, runs the simulation
+    // d - number of days the simulation runs for
+    pub fn run(&mut self, d: usize) {
+        println!("Simulation finished\n");
     }
 
     pub fn get_land(self) -> usize {

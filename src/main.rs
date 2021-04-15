@@ -9,4 +9,5 @@ fn main() {
     println!{"{:?}",s};
     s.init();
     println!("{:?}",s);
+    s.run(5);
 }
