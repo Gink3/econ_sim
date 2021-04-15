@@ -11,7 +11,7 @@ use std::io::{self, Write};
 //      1 - primary
 //      2 - Intermediate
 //      3 - final
-// tid - trader id of owner
+// ownerid - trader id of owner
 // cost - cost calculated by the factors of the production from the controller
 // prod - hashmap with product name, amount pairs
 // needs - daily needs to proudce goods if not met no production occurs
@@ -20,7 +20,7 @@ use std::io::{self, Write};
 pub struct Producer<'a> {
     pid: usize,
     ptype: u8,
-    tid: usize,
+    ownerid: usize,
     cost: i64,
     prod: HashMap<&'a str, u64>,
     needs: HashMap<&'a str, u64>,
@@ -37,7 +37,7 @@ impl<'a> Producer<'a> {
         let mut pro = Producer {
             pid: p,
             ptype: 0,
-            tid: t,
+            ownerid: t,
             cost: c,
             prod: HashMap::new(),
             needs: HashMap::new(),
@@ -103,6 +103,11 @@ impl<'a> Producer<'a> {
         }
         true
     }
+    // Change owner id
+    // no - new owner id
+    pub fn change_owner(&mut self, no: usize) {
+        self.ownerid = no;
+    }
     pub fn get_ptype(self) -> u8 {
         self.ptype
     }
@@ -111,7 +116,7 @@ impl<'a> Producer<'a> {
     }
 
     pub fn get_tid(self) -> usize {
-        self.tid
+        self.ownerid
     }
     pub fn get_cost(self) -> i64 {
         self.cost
