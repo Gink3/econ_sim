@@ -115,7 +115,7 @@ impl<'a> Producer<'a> {
         self.pid
     }
 
-    pub fn get_tid(self) -> usize {
+    pub fn get_ownerid(self) -> usize {
         self.ownerid
     }
     pub fn get_cost(self) -> i64 {
@@ -145,34 +145,40 @@ mod tests {
     use super::*;
 
     #[test]
-    fn has_pid() {
+    fn test_has_pid() {
         let p = Producer::new(1,0,1000);
         assert_eq!(1,p.get_pid());
     }
 
     #[test]
-    fn materials_recieved_not_already_found() {
+    fn test_materials_recieved_not_already_found() {
         let mut p = Producer::new(1,0,1000);
         p.ship_materials("Iron",300);
         assert_eq!(300,p.check_hold("Iron"));
     }
     #[test]
-    fn materials_recieved_already_found() {
+    fn test_materials_recieved_already_found() {
         let mut p = Producer::new(1,0,1000);
         p.ship_materials("Iron",300);
         p.ship_materials("Iron",300);
         assert_eq!(600,p.check_hold("Iron"));
     }
     #[test]
-    fn daily_check_pass() {
+    fn test_daily_check_pass() {
         let mut p = Producer::new(1,0,1000);
         p.ship_materials("Iron",300);
         p.ship_materials("Coal",300);
         assert_eq!(true,p.daily_check());
     }
     #[test]
-    fn daily_check_fail() {
+    fn test_daily_check_fail() {
         let p = Producer::new(1,0,1000);
         assert_eq!(false,p.daily_check());
+    }
+    #[test]
+    fn test_change_owner() {
+        let mut p = Producer::new(1,0,1000);
+        p.change_owner(14);
+        assert_eq!(14,p.get_ownerid());
     }
 }
