@@ -62,9 +62,16 @@ impl<'a> Sim<'a> {
     pub fn init(&mut self) {
         // Reference https://doc.rust-lang.org/rust-by-example/std_misc/file/open.html
         let path = Path::new(&self.cfg);
+        
+        let f = File::open(&path);
 
-        let file = File::open(&path).unwrap();
-        let reader = BufReader::new(file);
+        let mut f = match f {
+            Ok(file) => file,
+            Err(error) => {panic!("{:?}", error);},
+        };
+        
+
+        let reader = BufReader::new(f);
 
         for (index, line) in reader.lines().enumerate() {
             let mut line = line.unwrap(); // Ignore errors.
