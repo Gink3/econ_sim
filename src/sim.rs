@@ -35,6 +35,7 @@ pub struct Sim<'a> {
     prods: Vec<Producer<'a>>,
     mp: HashMap<&'a str, u64>,
     avg_age: u64,
+    daily_order: Vec<usize>,
 }
 
 impl<'a> Sim<'a> {
@@ -51,6 +52,7 @@ impl<'a> Sim<'a> {
             prods: Vec::new(),
             mp: HashMap::new(),
             avg_age: 0,
+            daily_order: Vec::new(),
         }
     }
     // calculates and prints out simulation statistics
@@ -129,7 +131,36 @@ impl<'a> Sim<'a> {
     // Main function of this class, runs the simulation
     // d - number of days the simulation runs for
     pub fn run(&mut self, d: usize) {
-        println!("Simulation finished\n");
+        for day in 0..d {
+            self.gen_d_order();
+            for t in 0..self.num_traders {
+                //traders action code goes here
+            }
+
+            self.daily_order.clear();
+        }
+    }
+
+    // Fills vector with a psuedo random order of indices
+    // used for iterating over trader objects at random
+    fn gen_d_order(&mut self) {
+        let mut rng = thread_rng();
+        for t in 0..self.num_traders {
+            let mut added = false;
+            //println!("{:?}",t);
+            while !added {
+                let r: usize = rng.gen_range(0..self.num_traders);
+                //println!("{:?}",r);
+                if self.daily_order.contains(&r) {
+                    added = false;
+                } else {
+                    added = true;
+                    self.daily_order.push(r);
+                }
+                //println!("{:?}",self.daily_order);
+            }
+
+        }
     }
 
     pub fn get_land(self) -> usize {

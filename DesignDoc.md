@@ -87,7 +87,15 @@ Manages needs based on a variable factor of land size
 
 ## Daily Process
 The Consumer and all traders are looking to fill their needs each day.
-
+1. Generate random order for traders to take their actions in
+2. Iterate over traders 1 by 1
+3. Trader uses an initially random set of weights to determine the action taken that day
+    * Buy
+    * Sell
+    * Wait
+4. Execute choosen action
+5. Adjust prices accordingly
 
 ## Simulation Initialization
 
+## TODO Priorities
