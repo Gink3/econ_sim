@@ -10,6 +10,9 @@ use crate::sim::producer::Producer;
 mod trader;
 use crate::sim::trader::Trader;
 
+mod market;
+use crate::sim::market::Market;
+
 // Sim Class
 // Controller of the simulation
 // land - generated from a sim config file
@@ -36,6 +39,7 @@ pub struct Sim<'a> {
     mp: HashMap<&'a str, u64>,
     avg_age: u64,
     daily_order: Vec<usize>,
+    market: Market,
 }
 
 impl<'a> Sim<'a> {
@@ -53,6 +57,7 @@ impl<'a> Sim<'a> {
             mp: HashMap::new(),
             avg_age: 0,
             daily_order: Vec::new(),
+            market: Market::new(),
         }
     }
     // calculates and prints out simulation statistics
