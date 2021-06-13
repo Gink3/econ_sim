@@ -25,6 +25,7 @@ pub struct Trader<'a> {
     last: String,
     bank: HashMap<&'a str, i64>,
     holdings: HashMap<&'a str, i64>,
+    action_weights: Vec<usize>
 } 
 
 // Private function for reading specified line of a file
@@ -44,6 +45,7 @@ impl<'a> Trader<'a> {
             last: String::new(),
             bank: HashMap::new(),
             holdings: HashMap::new(),
+            action_weights: Vec::new(),
         };
         t.init();
         t
@@ -80,6 +82,10 @@ impl<'a> Trader<'a> {
         self.select_first();
         self.select_last();
         self.bank.insert("USD",1000);
+        let mut rng = thread_rng();
+        for i in 0..3 {
+            self.action_weights.push(rng.gen_range(0..100));
+        }
     }
     // Chooses first name from name file
     fn select_first(&mut self) {
