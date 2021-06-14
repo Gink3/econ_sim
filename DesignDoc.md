@@ -7,7 +7,6 @@
         * Export to JSON automatically
 * Track methodology versus results in a competitive market place
 
-
 ## Terms
 * Trader - Trading entities that control goods and make decisions
 * Producers - Farm or Mine that produces raw materials
@@ -16,18 +15,15 @@
 * Goods - Any product or material
 * Retail goods - Products that are only needed by the consumer
 
-
 ## Computations
 * **Note** Each trader has a float from -20 to 20 that controls what they believe it is worth called attitude
 * Producer Value - ((products/day) * price) * attitude
-
 
 ## Classes
 ### Class interactions
 Sim acts as a controller for Trader, Producer, Consumer, Market
 Trader owns Producer
 Consumer looks at market and buys from trader
-
 ### Sim
 * Simulation Controller Class
 * Land is a randomly generated number that seeds how many consumers(population) are set
@@ -65,37 +61,57 @@ A producer looks to have enough inventory for a week and throughout the week it 
 
 
 ### Trader Behavior
-#### Selling a product
-* Setting a price
-    * if not being sold retail = [cost / (100 - markup %)] * 100
-    * if being sold already and cost is less than current price
-        * Undercut new_price = (current price - cost) / 4 + current price
-    * if being sold already and cost is above 
 #### Buying a product
-Consumer acts as a product sink
-Manages needs based on a variable factor of land size
+Looks at a given commodity, determines if the price is above or below an internal price prediction
 
+#### Nerual Network 
+Inputs
+* Current Price
+* 
+Outputs
+* Buy commodity
+* Sell commondity
 
-## Algorithms
-1. Randomly Choose land size as square kilometers
-2. Generate X number of Merchant where X is a % of land
-    * Set percentage in sim file
-3. Generate Y number of Producers where Y is a % of land
-    * Set percentage in sim file
-4. Merchants bid on Producers, where the value is determined by a
-5. 
+### Market behavior
+Market transactions are solved on a per time step basis resolving any trades utilizing a bid system that will execute upon having intersecting buy and sell bids. Editing and resolving quantities in the 
+Market Entry
+* Commodity name
+* Current Price = Highest bid - Lowest sell price
+* List of bids ordered by price given as a tuple (bid price per unit, tid, number of units)
+* Quantity of units outstanding
+* Quantity of units looking to sell
+* Quantitiy of units looking to be bought
 
 ## Daily Process
 The Consumer and all traders are looking to fill their needs each day.
 1. Generate random order for traders to take their actions in
 2. Iterate over traders 1 by 1
 3. Trader uses an initially random set of weights to determine the action taken that day
-    * Buy
+    * Bid
     * Sell
     * Wait
 4. Execute choosen action
 5. Adjust prices accordingly
 
 ## Simulation Initialization
+Every Trader gets 10000 dollars
+Commdity Prices will be randomized
+N - number of traders, goal is 10-50 traders
 
 ## TODO Priorities
+1. Market functionality
+    * Placing bids
+    * Cancelling bids
+    * Setting sell prices
+    * Executing trades
+2. Trader Internal Thoughts
+    * Internal Pricing
+    * Nerual Network for deciding actions
+    * 
+3. Time Step functionality
+4. Bank Function
+
+
+## Prior Works
+[An artificial stock market](https://www.researchgate.net/profile/R-Palmer-2/publication/225471692_An_artificial_stock_market/links/0fcfd513767593647d000000/An-artificial-stock-market.pdf)
+[Manually creating a nerual network](https://pwy.io/en/posts/learning-to-fly-pt2/)
