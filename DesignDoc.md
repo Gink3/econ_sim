@@ -99,17 +99,19 @@ Commdity Prices will be randomized
 N - number of traders, goal is 10-50 traders
 
 ## TODO Priorities
-1. Market functionality
+1. Good Functionality
+    * Unit Tests
+2. Market functionality
     * Placing bids
     * Cancelling bids
     * Setting sell prices
     * Executing trades
-2. Trader Internal Thoughts
+3. Trader Internal Thoughts
     * Internal Pricing
     * Nerual Network for deciding actions
     * 
-3. Time Step functionality
-4. Bank Function
+4. Time Step functionality
+5. Bank Function
 
 
 ## Prior Works
