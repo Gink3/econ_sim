@@ -11,6 +11,8 @@ pub struct Good {
     name: String,
     price: usize,
     quantity: usize,
+    sell_bids: Vec<Bid>,
+    buy_bids: Vec<Bid>,
 }
 
 impl<'a> Good {
@@ -19,6 +21,8 @@ impl<'a> Good {
             name: n,
             price: p,
             quantity: q,
+            sell_bids: Vec::new(),
+            buy_bids: Vec::new(),
         }
     }
     // Cancels a bid corresponding to the tid

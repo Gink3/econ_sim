@@ -1,4 +1,5 @@
 
+#[derive(Debug)]
 pub struct Bid {
     price: f32,
     tid: usize,
