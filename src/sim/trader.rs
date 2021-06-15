@@ -84,7 +84,7 @@ impl<'a> Trader<'a> {
         self.select_last();
         self.bank.insert("USD",1000);
         let mut rng = thread_rng();
-        for i in 0..3 {
+        for _i in 0..3 {
             self.action_weights.push(rng.gen_range(0..100));
         }
     }

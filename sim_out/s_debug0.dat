@@ -10,151 +10,151 @@
     {
       "tid": 1,
       "age": 0,
-      "first": "Caitrin",
-      "last": "Chinn",
+      "first": "Rosemarie",
+      "last": "Cantv",
       "bank": {
         "USD": 1000
       },
       "holdings": {},
       "action_weights": [
-        44,
-        46,
-        70
+        99,
+        77,
+        55
       ]
     },
     {
       "tid": 2,
       "age": 0,
-      "first": "Belicia",
-      "last": "Swaggert",
+      "first": "Terza",
+      "last": "Kunimitsu",
       "bank": {
         "USD": 1000
       },
       "holdings": {},
       "action_weights": [
-        98,
-        83,
-        51
+        26,
+        76,
+        39
       ]
     },
     {
       "tid": 3,
       "age": 0,
-      "first": "Maddie",
-      "last": "Zmuda",
+      "first": "Sarena",
+      "last": "Lucia",
       "bank": {
         "USD": 1000
       },
       "holdings": {},
       "action_weights": [
-        43,
-        7,
-        1
+        52,
+        66,
+        22
       ]
     },
     {
       "tid": 4,
       "age": 0,
-      "first": "Nari",
-      "last": "Reitano",
+      "first": "Sophronia",
+      "last": "Bhardwaj",
       "bank": {
         "USD": 1000
       },
       "holdings": {},
       "action_weights": [
-        48,
-        13,
-        49
+        17,
+        7,
+        7
       ]
     },
     {
       "tid": 5,
       "age": 0,
-      "first": "Tonya",
-      "last": "Manfra",
-      "bank": {
-        "USD": 1000
-      },
-      "holdings": {},
-      "action_weights": [
-        57,
-        91,
-        65
-      ]
-    },
-    {
-      "tid": 6,
-      "age": 0,
-      "first": "Marja",
-      "last": "Reynoso",
-      "bank": {
-        "USD": 1000
-      },
-      "holdings": {},
-      "action_weights": [
-        69,
-        59,
-        99
-      ]
-    },
-    {
-      "tid": 7,
-      "age": 0,
-      "first": "Judye",
-      "last": "Oles",
-      "bank": {
-        "USD": 1000
-      },
-      "holdings": {},
-      "action_weights": [
-        41,
-        10,
-        42
-      ]
-    },
-    {
-      "tid": 8,
-      "age": 0,
-      "first": "Juline",
-      "last": "Renninger",
-      "bank": {
-        "USD": 1000
-      },
-      "holdings": {},
-      "action_weights": [
-        1,
-        35,
-        11
-      ]
-    },
-    {
-      "tid": 9,
-      "age": 0,
-      "first": "Flossy",
-      "last": "Erixon",
-      "bank": {
-        "USD": 1000
-      },
-      "holdings": {},
-      "action_weights": [
-        86,
-        21,
-        62
-      ]
-    },
-    {
-      "tid": 10,
-      "age": 0,
-      "first": "Charmine",
-      "last": "Rokisky",
+      "first": "Madelina",
+      "last": "Bunton",
       "bank": {
         "USD": 1000
       },
       "holdings": {},
       "action_weights": [
         7,
-        66,
-        6
+        26,
+        54
+      ]
+    },
+    {
+      "tid": 6,
+      "age": 0,
+      "first": "Jacklyn",
+      "last": "Bixel",
+      "bank": {
+        "USD": 1000
+      },
+      "holdings": {},
+      "action_weights": [
+        0,
+        85,
+        66
+      ]
+    },
+    {
+      "tid": 7,
+      "age": 0,
+      "first": "Minette",
+      "last": "Laisure",
+      "bank": {
+        "USD": 1000
+      },
+      "holdings": {},
+      "action_weights": [
+        25,
+        2,
+        29
+      ]
+    },
+    {
+      "tid": 8,
+      "age": 0,
+      "first": "Jacklin",
+      "last": "Gals",
+      "bank": {
+        "USD": 1000
+      },
+      "holdings": {},
+      "action_weights": [
+        54,
+        53,
+        59
+      ]
+    },
+    {
+      "tid": 9,
+      "age": 0,
+      "first": "Halli",
+      "last": "Lyford",
+      "bank": {
+        "USD": 1000
+      },
+      "holdings": {},
+      "action_weights": [
+        20,
+        50,
+        19
+      ]
+    },
+    {
+      "tid": 10,
+      "age": 0,
+      "first": "Kevyn",
+      "last": "Squire",
+      "bank": {
+        "USD": 1000
+      },
+      "holdings": {},
+      "action_weights": [
+        92,
+        52,
+        70
       ]
     }
   ],

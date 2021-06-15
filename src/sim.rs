@@ -73,7 +73,7 @@ impl<'a> Sim<'a> {
         
         let f = File::open(&path);
 
-        let mut f = match f {
+        let f = match f {
             Ok(file) => file,
             Err(error) => {panic!("{:?}", error);},
         };
@@ -137,9 +137,9 @@ impl<'a> Sim<'a> {
     // Main function of this class, runs the simulation
     // d - number of days the simulation runs for
     pub fn run(&mut self, d: usize) {
-        for day in 0..d {
+        for _day in 0..d {
             self.gen_d_order();
-            for t in 0..self.num_traders {
+            for _t in 0..self.num_traders {
                 //traders action code goes here
             }
 
@@ -151,7 +151,7 @@ impl<'a> Sim<'a> {
     // used for iterating over trader objects at random
     fn gen_d_order(&mut self) {
         let mut rng = thread_rng();
-        for t in 0..self.num_traders {
+        for _t in 0..self.num_traders {
             let mut added = false;
             //println!("{:?}",t);
             while !added {
