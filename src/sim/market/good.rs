@@ -39,8 +39,16 @@ impl<'a> Good {
         self.buy_bids.remove(index);
     }
     // Cancels a bid corresponding to the tid
-    pub fn cancel_sell_bid() {
-        todo!()
+    pub fn cancel_sell_bid(&mut self, t: usize) {
+        let mut index = 0;
+        for b in &self.buy_bids {
+            if b.get_tid() == t {
+                break;
+            } else {
+                index+=1;
+            }
+        }
+        self.sell_bids.remove(index);
     }
     // adds a buy bid inserting from high to low
     pub fn add_buy_bid() {
