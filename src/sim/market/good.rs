@@ -116,6 +116,10 @@ mod tests {
     }
     #[test]
     fn add_two_buy_bids() {
+        let mut g = Good::new("Test".to_string(),70,70);
 
+        g.add_buy_bid(69.0,1,1);
+        g.add_buy_bid(76.0,1,1);
+        assert_eq!(76.0,g.get_highest_buy_bid())
     }
 }
