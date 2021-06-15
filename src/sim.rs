@@ -188,26 +188,26 @@ mod tests {
 
     #[test]
     fn reads_land() {
-        let mut s = Sim::new(".\\sim_config\\sample.cfg".to_string());
+        let mut s = Sim::new("./sim_config/sample.cfg".to_string());
         s.init();
         assert_eq!(10000,s.get_land());
     }
     #[test]
     fn reads_prate() {
-        let mut s = Sim::new(".\\sim_config\\sample.cfg".to_string());
+        let mut s = Sim::new("./sim_config/sample.cfg".to_string());
         s.init();
         assert_eq!(35,s.get_prate());
     }
     #[test]
     fn reads_trate() {
-        let mut s = Sim::new(".\\sim_config\\sample.cfg".to_string());
+        let mut s = Sim::new("./sim_config/sample.cfg".to_string());
         s.init();
         assert_eq!(5,s.get_trate());
     }
     // NOTE tid is initially 1 greater than index
     #[test]
     fn finds_trader_index() {
-        let mut s = Sim::new(".\\sim_config\\sample.cfg".to_string());
+        let mut s = Sim::new("./sim_config/sample.cfg".to_string());
         s.init();
         assert_eq!(s.get_index_tid(5).unwrap(), 4);
     }
