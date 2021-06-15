@@ -1,5 +1,5 @@
 
-#[derive(Debug)]
+#[derive(Debug,Clone,Copy)]
 pub struct Bid {
     price: f32,
     tid: usize,
@@ -13,5 +13,8 @@ impl Bid {
             tid: t,
             quantity: q,
         }
+    }
+    pub fn get_tid(self) -> usize {
+        self.tid
     }
 }

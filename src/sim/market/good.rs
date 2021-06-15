@@ -26,8 +26,16 @@ impl<'a> Good {
         }
     }
     // Cancels a bid corresponding to the tid
-    pub fn cancel_buy_bid() {
-        todo!()
+    pub fn cancel_buy_bid(&mut self, t: usize) {
+        let mut index = 0;
+        for b in &self.buy_bids {
+            if b.get_tid() == t {
+                break;
+            } else {
+                index+=1;
+            }
+        }
+        self.buy_bids.remove(index);
     }
     // Cancels a bid corresponding to the tid
     pub fn cancel_sell_bid() {
