@@ -39,7 +39,7 @@ impl<'a> Good {
         self.buy_bids.remove(index);
     }
     // Cancels a bid corresponding to the tid
-    pub fn cancel_sell_bid(&mut self, t: usize) {
+    pub fn cancel_sell_bid_(&mut self, t: usize) {
         let mut index = 0;
         for b in &self.buy_bids {
             if b.get_tid() == t {
@@ -51,8 +51,22 @@ impl<'a> Good {
         self.sell_bids.remove(index);
     }
     // adds a buy bid inserting from high to low
-    pub fn add_buy_bid() {
-        todo!()
+    pub fn add_buy_bid(&mut self, p:f32,t: usize, q:usize) {
+        let bid = Bid::new(p,t,q);
+        // check if list is empty
+        if self.buy_bids.is_empty() {
+            self.buy_bids.push(bid);
+        } else {
+            // checks for where a bid should be placed
+            let mut index = 0;
+            for b in &self.buy_bids {
+                if p > b.get_price() {
+                    break;
+                } 
+                index+=1;
+            }
+            self.buy_bids.insert(index, bid);
+        }
     }
     // adds a sell bid inserting from low to high
     pub fn add_sell_bid() {
@@ -75,11 +89,33 @@ impl<'a> Good {
         todo!()
     }
     // returns highest buy price
-    fn get_highest_buy_bid(self) -> usize {
-        todo!()
+    fn get_highest_buy_bid(self) -> f32 {
+        if self.buy_bids.is_empty() {
+            -1.0
+        } else {
+            self.buy_bids[0].get_price()
+        }
     }
     // returns lowest sell price
-    fn get_lowest_sell_bid(self) -> usize {
+    fn get_lowest_sell_bid(self) -> f32 {
         todo!()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    #[warn(unused_imports)]
+    use super::*;
+
+    #[test]
+    fn add_buy_bid() {
+        let mut g = Good::new("Test".to_string(),70,70);
+
+        g.add_buy_bid(69.0,1,1);
+        assert_eq!(69.0,g.get_highest_buy_bid())
+    }
+    #[test]
+    fn add_two_buy_bids() {
+
     }
 }

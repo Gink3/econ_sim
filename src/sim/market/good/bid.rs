@@ -15,6 +15,9 @@ impl Bid {
             quantity: q,
         }
     }
+    pub fn get_price(self) -> f32 {
+        self.price
+    }
     pub fn get_tid(self) -> usize {
         self.tid
     }

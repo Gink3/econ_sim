@@ -10,151 +10,151 @@
     {
       "tid": 1,
       "age": 0,
-      "first": "Letti",
-      "last": "Fendrick",
+      "first": "Crin",
+      "last": "Levert",
       "bank": {
         "USD": 1000
       },
       "holdings": {},
       "action_weights": [
-        70,
-        20,
-        92
+        66,
+        10,
+        91
       ]
     },
     {
       "tid": 2,
       "age": 0,
-      "first": "Clementine",
-      "last": "Leacock",
+      "first": "Shanda",
+      "last": "Srock",
       "bank": {
         "USD": 1000
       },
       "holdings": {},
       "action_weights": [
-        23,
-        46,
-        1
+        25,
+        92,
+        32
       ]
     },
     {
       "tid": 3,
       "age": 0,
-      "first": "Christine",
-      "last": "Dusky",
+      "first": "Ariel",
+      "last": "Hagel",
       "bank": {
         "USD": 1000
       },
       "holdings": {},
       "action_weights": [
-        46,
-        81,
-        34
+        29,
+        76,
+        15
       ]
     },
     {
       "tid": 4,
       "age": 0,
-      "first": "Glenna",
-      "last": "Pancho",
+      "first": "Maryl",
+      "last": "Stimpson",
       "bank": {
         "USD": 1000
       },
       "holdings": {},
       "action_weights": [
-        45,
-        69,
-        1
+        0,
+        93,
+        13
       ]
     },
     {
       "tid": 5,
       "age": 0,
-      "first": "Estrellita",
-      "last": "Fettes",
+      "first": "Molli",
+      "last": "Ballman",
       "bank": {
         "USD": 1000
       },
       "holdings": {},
       "action_weights": [
-        72,
-        76,
-        91
+        93,
+        78,
+        67
       ]
     },
     {
       "tid": 6,
       "age": 0,
-      "first": "Em",
-      "last": "Amoros",
+      "first": "Penni",
+      "last": "Scaggs",
       "bank": {
         "USD": 1000
       },
       "holdings": {},
       "action_weights": [
-        67,
-        58,
-        57
+        61,
+        13,
+        85
       ]
     },
     {
       "tid": 7,
       "age": 0,
-      "first": "Eustacia",
-      "last": "Matuseski",
+      "first": "Albertina",
+      "last": "Juel",
       "bank": {
         "USD": 1000
       },
       "holdings": {},
       "action_weights": [
-        36,
-        9,
-        48
+        7,
+        56,
+        45
       ]
     },
     {
       "tid": 8,
       "age": 0,
-      "first": "Bobbette",
-      "last": "Cuccaro",
+      "first": "Devora",
+      "last": "Pusateri",
       "bank": {
         "USD": 1000
       },
       "holdings": {},
       "action_weights": [
-        30,
-        23,
-        59
+        35,
+        79,
+        60
       ]
     },
     {
       "tid": 9,
       "age": 0,
-      "first": "Goldie",
-      "last": "Privett",
+      "first": "Minne",
+      "last": "Gari",
       "bank": {
         "USD": 1000
       },
       "holdings": {},
       "action_weights": [
-        20,
-        50,
-        9
+        64,
+        21,
+        87
       ]
     },
     {
       "tid": 10,
       "age": 0,
-      "first": "Katti",
-      "last": "Mitten",
+      "first": "Billy",
+      "last": "Widmer",
       "bank": {
         "USD": 1000
       },
       "holdings": {},
       "action_weights": [
-        42,
-        39,
-        9
+        68,
+        66,
+        66
       ]
     }
   ],
