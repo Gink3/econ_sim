@@ -1,10 +1,11 @@
+use serde::{Serialize, Deserialize};
 
 mod good;
 use crate::sim::market::good::Good;
 // Example Table
 // Good, Price, Quantity
 // String, usize, usize
-#[derive(Debug)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Market {
     goods: Vec<Good>,
 }

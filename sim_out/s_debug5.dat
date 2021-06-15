@@ -1,0 +1,168 @@
+{
+  "cfg": "./sim_config/sim.cfg",
+  "land": 10000,
+  "prate": 35,
+  "trate": 5,
+  "next_tid": 11,
+  "next_pid": 0,
+  "num_traders": 10,
+  "traders": [
+    {
+      "tid": 1,
+      "age": 0,
+      "first": "Caitrin",
+      "last": "Chinn",
+      "bank": {
+        "USD": 1000
+      },
+      "holdings": {},
+      "action_weights": [
+        44,
+        46,
+        70
+      ]
+    },
+    {
+      "tid": 2,
+      "age": 0,
+      "first": "Belicia",
+      "last": "Swaggert",
+      "bank": {
+        "USD": 1000
+      },
+      "holdings": {},
+      "action_weights": [
+        98,
+        83,
+        51
+      ]
+    },
+    {
+      "tid": 3,
+      "age": 0,
+      "first": "Maddie",
+      "last": "Zmuda",
+      "bank": {
+        "USD": 1000
+      },
+      "holdings": {},
+      "action_weights": [
+        43,
+        7,
+        1
+      ]
+    },
+    {
+      "tid": 4,
+      "age": 0,
+      "first": "Nari",
+      "last": "Reitano",
+      "bank": {
+        "USD": 1000
+      },
+      "holdings": {},
+      "action_weights": [
+        48,
+        13,
+        49
+      ]
+    },
+    {
+      "tid": 5,
+      "age": 0,
+      "first": "Tonya",
+      "last": "Manfra",
+      "bank": {
+        "USD": 1000
+      },
+      "holdings": {},
+      "action_weights": [
+        57,
+        91,
+        65
+      ]
+    },
+    {
+      "tid": 6,
+      "age": 0,
+      "first": "Marja",
+      "last": "Reynoso",
+      "bank": {
+        "USD": 1000
+      },
+      "holdings": {},
+      "action_weights": [
+        69,
+        59,
+        99
+      ]
+    },
+    {
+      "tid": 7,
+      "age": 0,
+      "first": "Judye",
+      "last": "Oles",
+      "bank": {
+        "USD": 1000
+      },
+      "holdings": {},
+      "action_weights": [
+        41,
+        10,
+        42
+      ]
+    },
+    {
+      "tid": 8,
+      "age": 0,
+      "first": "Juline",
+      "last": "Renninger",
+      "bank": {
+        "USD": 1000
+      },
+      "holdings": {},
+      "action_weights": [
+        1,
+        35,
+        11
+      ]
+    },
+    {
+      "tid": 9,
+      "age": 0,
+      "first": "Flossy",
+      "last": "Erixon",
+      "bank": {
+        "USD": 1000
+      },
+      "holdings": {},
+      "action_weights": [
+        86,
+        21,
+        62
+      ]
+    },
+    {
+      "tid": 10,
+      "age": 0,
+      "first": "Charmine",
+      "last": "Rokisky",
+      "bank": {
+        "USD": 1000
+      },
+      "holdings": {},
+      "action_weights": [
+        7,
+        66,
+        6
+      ]
+    }
+  ],
+  "prods": [],
+  "mp": {},
+  "avg_age": 0,
+  "daily_order": [],
+  "market": {
+    "goods": []
+  }
+}

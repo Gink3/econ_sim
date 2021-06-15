@@ -1,5 +1,6 @@
+use serde::{Serialize, Deserialize};
 
-#[derive(Debug,Clone,Copy)]
+#[derive(Debug,Clone,Copy,Serialize, Deserialize)]
 pub struct Bid {
     price: f32,
     tid: usize,

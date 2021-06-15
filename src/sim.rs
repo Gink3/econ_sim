@@ -3,6 +3,7 @@ use std::fs::File;
 use std::io::{self, prelude::*, BufRead, BufReader};
 use std::path::Path;
 use std::collections::HashMap;
+use serde::{Serialize, Deserialize};
 
 mod producer;
 use crate::sim::producer::Producer;
@@ -24,7 +25,7 @@ use crate::sim::market::Market;
 // prods - array that stores production data
 // mp - market prices for all goods (item name, price)
 // avg_age - end of simulation metric
-#[derive(Debug)]
+#[derive(Debug, Serialize)]
 pub struct Sim<'a> {
     //Statistics of the simulation
     cfg: String,

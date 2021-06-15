@@ -1,0 +1,17 @@
+{
+  "cfg": "./sim_config/sim.cfg",
+  "land": 0,
+  "prate": 0,
+  "trate": 0,
+  "next_tid": 1,
+  "next_pid": 0,
+  "num_traders": 0,
+  "traders": [],
+  "prods": [],
+  "mp": {},
+  "avg_age": 0,
+  "daily_order": [],
+  "market": {
+    "goods": []
+  }
+}

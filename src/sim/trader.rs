@@ -9,6 +9,7 @@ use std::io::Error;
 
 use std::collections::HashMap;
 
+use serde::{Serialize, Deserialize};
 // Trader Class
 // tid - trader id
 // age - age in days
@@ -17,7 +18,7 @@ use std::collections::HashMap;
 // bank - hashmap for currencies and amounts
 // holdings - hashmap for products and amounts
 //
-#[derive(Debug)]
+#[derive(Debug, Serialize)]
 pub struct Trader<'a> {
     tid: usize,
     pub age: u8,

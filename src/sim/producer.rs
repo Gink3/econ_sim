@@ -3,7 +3,7 @@ use std::collections::HashMap;
 use std::fs;
 use std::fs::{File,OpenOptions};
 use std::io::{self, Write};
-
+use serde::{Serialize, Deserialize};
 // Producer Class
 // pid - producer id
 // ptype - code for different type of good produced
@@ -16,7 +16,7 @@ use std::io::{self, Write};
 // prod - hashmap with product name, amount pairs
 // needs - daily needs to proudce goods if not met no production occurs
 // 
-#[derive(Debug)]
+#[derive(Debug, Serialize)]
 pub struct Producer<'a> {
     pid: usize,
     ptype: u8,

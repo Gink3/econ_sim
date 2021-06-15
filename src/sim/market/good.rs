@@ -1,3 +1,4 @@
+use serde::{Serialize, Deserialize};
 
 mod bid;
 use crate::sim::market::good::bid::Bid;
@@ -6,7 +7,7 @@ use crate::sim::market::good::bid::Bid;
 // name of the good
 // price of a single unit of the good
 // quantity of goods availble to buy at any 1 time
-#[derive(Debug)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Good {
     name: String,
     price: usize,
