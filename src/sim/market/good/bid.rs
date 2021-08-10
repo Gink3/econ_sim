@@ -21,4 +21,7 @@ impl Bid {
     pub fn get_tid(self) -> usize {
         self.tid
     }
+    pub fn get_quantity(self) -> usize {
+        self.quantity
+    }
 }
