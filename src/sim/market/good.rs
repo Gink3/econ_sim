@@ -70,7 +70,21 @@ impl<'a> Good {
     }
     // adds a sell bid inserting from low to high
     pub fn add_sell_bid() {
-        todo!()
+        let bid = Bid::new(p,t,q);
+        // check if list is empty
+        if self.sell_bids.is_empty() {
+            self.sell_bids.push(bid);
+        } else {
+            // checks for where a bid should be placed
+            let mut index = 0;
+            for b in &self.sell_bids {
+                if p < b.get_price() {
+                    break;
+                } 
+                index+=1;
+            }
+            self.sell_bids.insert(index, bid);
+        }
     }
     // updates display price
     pub fn update_price() {
@@ -78,7 +92,7 @@ impl<'a> Good {
     }
     // resolves any compatible bids
     pub fn resolve_bids() {
-
+        todo!()
     }
     // order bids may be unneccessary if additions are inserted in order
     fn order_sell_bids(&mut self) {
