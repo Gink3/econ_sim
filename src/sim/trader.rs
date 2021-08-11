@@ -18,18 +18,17 @@ use serde::{Serialize, Deserialize};
 // bank - hashmap for currencies and amounts
 // holdings - hashmap for products and amounts
 //
-#[derive(Debug, Serialize)]
+#[derive(Clone, Debug, Serialize)]
 pub struct Trader<'a> {
     tid: usize,
     pub age: u8,
-    first: String,
-    last: String,
     bank: HashMap<&'a str, i64>,
     holdings: HashMap<&'a str, i64>,
     action_weights: Vec<usize>
 } 
 
 // Private function for reading specified line of a file
+// No longer needed once names were removed from the trader struct
 fn get_line_at(path: &Path, line_num: usize) -> Result<String, Error> {
     let file = File::open(path).expect("File not found or cannot be opened");
     let content = BufReader::new(&file);
@@ -42,8 +41,6 @@ impl<'a> Trader<'a> {
         let mut t = Trader {
             tid: t,
             age: a,
-            first: String::new(),
-            last: String::new(),
             bank: HashMap::new(),
             holdings: HashMap::new(),
             action_weights: Vec::new(),
@@ -66,13 +63,6 @@ impl<'a> Trader<'a> {
     pub fn get_age(self) -> u8 {
         self.age
     }
-    // Returns full name for trader object
-    pub fn get_name(&mut self) -> String {
-        let name = &mut self.first;
-        name.push_str(" ");
-        name.push_str(&mut self.last);
-        name.to_string()
-    }
     // Passing a currency name as a string 
     // Adds currency pair initialized to 0
     pub fn add_currency(&mut self, c: &'a str) {
@@ -80,40 +70,17 @@ impl<'a> Trader<'a> {
     }
     // initialization finction that gives names and starting currency
     fn init(&mut self) {
-        self.select_first();
-        self.select_last();
         self.bank.insert("USD",1000);
         let mut rng = thread_rng();
         for _i in 0..3 {
             self.action_weights.push(rng.gen_range(0..100));
         }
     }
-    // Chooses first name from name file
-    fn select_first(&mut self) {
-        let mut rng = thread_rng();
-        let r: u32 = rng.gen_range(0..4946);
-        let p = Path::new("assets/first-names.txt");
-        let line = get_line_at(p, r as usize);
-
-        let name = line.unwrap();
-
-        self.first = name;
-
-    }
-    // Chooses last name from name file
-    fn select_last(&mut self) {
-        let mut rng = thread_rng();
-        let r: u32 = rng.gen_range(0..88800);
-        let p = Path::new("assets/last-names.txt");
-        let line = get_line_at(p, r as usize);
-
-        let name = line.unwrap();
-
-        self.last = name;
-
-    }
     
-    
+    pub fn act(&self) {
+        println!("{}",self.tid);
+    }
+
     pub fn get_tid(self) -> usize {
         self.tid
     }
@@ -123,13 +90,6 @@ impl<'a> Trader<'a> {
 mod tests {
     #[warn(unused_imports)]
     use super::*;
-
-    #[test]
-    fn has_name() {
-        let mut t = Trader::new(1,20);
-        let n = t.get_name();
-        assert!(!n.trim().is_empty());
-    }
     
     #[test]
     fn test_get_account_value() {

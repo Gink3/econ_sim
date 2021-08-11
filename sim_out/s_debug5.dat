@@ -10,151 +10,131 @@
     {
       "tid": 1,
       "age": 0,
-      "first": "Valenka",
-      "last": "Milnor",
       "bank": {
         "USD": 1000
       },
       "holdings": {},
       "action_weights": [
-        59,
-        14,
-        6
+        67,
+        99,
+        8
       ]
     },
     {
       "tid": 2,
       "age": 0,
-      "first": "Shana",
-      "last": "Vanslooten",
       "bank": {
         "USD": 1000
       },
       "holdings": {},
       "action_weights": [
-        44,
-        71,
-        35
+        20,
+        29,
+        73
       ]
     },
     {
       "tid": 3,
       "age": 0,
-      "first": "Claire",
-      "last": "Willemsen",
       "bank": {
         "USD": 1000
       },
       "holdings": {},
       "action_weights": [
-        94,
+        54,
         13,
-        26
+        46
       ]
     },
     {
       "tid": 4,
       "age": 0,
-      "first": "Josey",
-      "last": "Diffley",
       "bank": {
         "USD": 1000
       },
       "holdings": {},
       "action_weights": [
-        19,
-        11,
-        62
+        1,
+        65,
+        16
       ]
     },
     {
       "tid": 5,
       "age": 0,
-      "first": "Carin",
-      "last": "Delsordo",
       "bank": {
         "USD": 1000
       },
       "holdings": {},
       "action_weights": [
-        84,
-        52,
-        75
+        65,
+        4,
+        6
       ]
     },
     {
       "tid": 6,
       "age": 0,
-      "first": "Conny",
-      "last": "Isackson",
       "bank": {
         "USD": 1000
       },
       "holdings": {},
       "action_weights": [
-        76,
-        28,
-        82
+        70,
+        55,
+        97
       ]
     },
     {
       "tid": 7,
       "age": 0,
-      "first": "Clarabelle",
-      "last": "Malcomb",
       "bank": {
         "USD": 1000
       },
       "holdings": {},
       "action_weights": [
         68,
-        43,
-        8
+        52,
+        96
       ]
     },
     {
       "tid": 8,
       "age": 0,
-      "first": "Millicent",
-      "last": "Ehmen",
       "bank": {
         "USD": 1000
       },
       "holdings": {},
       "action_weights": [
-        48,
-        29,
-        13
+        20,
+        36,
+        24
       ]
     },
     {
       "tid": 9,
       "age": 0,
-      "first": "Gayla",
-      "last": "Matousek",
       "bank": {
         "USD": 1000
       },
       "holdings": {},
       "action_weights": [
-        8,
-        84,
-        88
+        26,
+        29,
+        52
       ]
     },
     {
       "tid": 10,
       "age": 0,
-      "first": "Allegra",
-      "last": "Calco",
       "bank": {
         "USD": 1000
       },
       "holdings": {},
       "action_weights": [
-        57,
-        55,
-        3
+        56,
+        17,
+        4
       ]
     }
   ],

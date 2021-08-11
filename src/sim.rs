@@ -138,9 +138,11 @@ impl<'a> Sim<'a> {
     // d - number of days the simulation runs for
     pub fn run(&mut self, d: usize) {
         for _day in 0..d {
-            self.gen_d_order();
-            for _t in 0..self.num_traders {
+            //dsiabled temporarily due to copy trait issues
+            //self.gen_d_order();
+            for _t in &self.traders {
                 //traders action code goes here
+                _t.act();
             }
 
             self.daily_order.clear();
@@ -167,6 +169,10 @@ impl<'a> Sim<'a> {
             }
 
         }
+    }
+
+    pub fn print_market(self) {
+        println!("{:?}",self.market);
     }
 
     pub fn get_land(self) -> usize {

@@ -69,7 +69,7 @@ impl<'a> Good {
         }
     }
     // adds a sell bid inserting from low to high
-    pub fn add_sell_bid() {
+    pub fn add_sell_bid(&mut self, p:f32,t: usize, q:usize) {
         let bid = Bid::new(p,t,q);
         // check if list is empty
         if self.sell_bids.is_empty() {

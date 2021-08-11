@@ -25,4 +25,7 @@ fn main() {
     s.run(5);
     data = serde_json::to_string_pretty(&s).unwrap();
     fs::write("./sim_out/s_debug5.dat", data).expect("Unable to write file");
+
+    s.print_market();
+
 }
