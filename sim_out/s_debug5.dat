@@ -15,9 +15,9 @@
       },
       "holdings": {},
       "action_weights": [
-        67,
-        99,
-        8
+        64,
+        81,
+        93
       ]
     },
     {
@@ -28,9 +28,9 @@
       },
       "holdings": {},
       "action_weights": [
-        20,
-        29,
-        73
+        84,
+        77,
+        43
       ]
     },
     {
@@ -41,9 +41,9 @@
       },
       "holdings": {},
       "action_weights": [
-        54,
-        13,
-        46
+        22,
+        24,
+        1
       ]
     },
     {
@@ -54,9 +54,9 @@
       },
       "holdings": {},
       "action_weights": [
-        1,
-        65,
-        16
+        96,
+        33,
+        74
       ]
     },
     {
@@ -67,9 +67,9 @@
       },
       "holdings": {},
       "action_weights": [
-        65,
-        4,
-        6
+        7,
+        42,
+        73
       ]
     },
     {
@@ -80,9 +80,9 @@
       },
       "holdings": {},
       "action_weights": [
-        70,
-        55,
-        97
+        5,
+        91,
+        89
       ]
     },
     {
@@ -93,9 +93,9 @@
       },
       "holdings": {},
       "action_weights": [
-        68,
-        52,
-        96
+        0,
+        74,
+        27
       ]
     },
     {
@@ -106,9 +106,9 @@
       },
       "holdings": {},
       "action_weights": [
-        20,
-        36,
-        24
+        41,
+        90,
+        21
       ]
     },
     {
@@ -119,9 +119,9 @@
       },
       "holdings": {},
       "action_weights": [
-        26,
-        29,
-        52
+        61,
+        93,
+        19
       ]
     },
     {
@@ -132,9 +132,9 @@
       },
       "holdings": {},
       "action_weights": [
-        56,
-        17,
-        4
+        40,
+        78,
+        41
       ]
     }
   ],
@@ -143,6 +143,14 @@
   "avg_age": 0,
   "daily_order": [],
   "market": {
-    "goods": []
+    "goods": [
+      {
+        "name": "Wood",
+        "price": 75,
+        "quantity": 1000,
+        "sell_bids": [],
+        "buy_bids": []
+      }
+    ]
   }
 }

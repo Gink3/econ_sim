@@ -114,6 +114,9 @@ impl<'a> Good {
     fn get_lowest_sell_bid(self) -> f32 {
         todo!()
     }
+    pub fn get_name(&self) -> &str {
+        &self.name
+    }
 }
 
 #[cfg(test)]

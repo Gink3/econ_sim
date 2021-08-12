@@ -106,6 +106,7 @@ impl<'a> Sim<'a> {
             self.create_traders();
         }
         self.num_traders = self.traders.iter().count();
+        self.market.add_good_to_market("Wood".to_string(),75, 1000);
     }
     // Creates the inital vector of traders
     fn create_traders(&mut self) {
