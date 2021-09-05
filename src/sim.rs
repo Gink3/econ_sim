@@ -3,6 +3,8 @@ use rand::Rng;
 
 use std::collections::HashMap;
 
+mod trader;
+use crate::sim::trader::Trader;
 
 // s_price stock price
 // traders hashmap info
@@ -10,12 +12,10 @@ use std::collections::HashMap;
 // trader[1] - amount of stock owned
 #[derive(Debug)]
 pub struct Sim {
-    s_price: i64,
-    s_quantity:i64,
-    traders: Vec<Vec<i32>>,
-
+    s_price: u64,
+    s_quantity:u64,
+    traders: Vec<Trader>,
 }
-
 
 impl Sim {
     pub fn new() -> Sim {
@@ -29,8 +29,8 @@ impl Sim {
     // nt - number of traders
     pub fn init(&mut self,nt: i32) {
         for i in 0..nt {
-            let n = vec![1000,0];
-            self.traders.push(n)
+            let t = Trader::new();
+            self.traders.push(t);
         }
     }
     // Main simulation function
@@ -38,13 +38,15 @@ impl Sim {
     pub fn run(&mut self, t: i32) {
         for d in 0..t {
             for trader in &self.traders {
-
+                let action = trader.trader_action();
+                match action {
+                    0 => (),    // Do Nothing
+                    1 => (),    // Buy
+                    2 => (),    // Sell
+                    3 => (),    // Trade
+                    _ => (),    // Error
+                }
             }
         }
-    }
-    fn trader_action(&self) -> i32 {
-        let mut rng = rand::thread_rng();
-        let num = rng.gen_range(0..4);
-        num
     }
 }
