@@ -20,10 +20,14 @@ impl Trader {
         let num = rng.gen_range(0..4);
         num
     }
+    pub fn buy_stock(&mut self, p:u64) {
+        self.money -= p;
+        self.stock += 1;
+    }
 
     // Takes a u32 and adds it to 
-    pub fn change_money(&mut self, a:u64) {
-        self.money += a;
+    pub fn get_money(&self) -> u64 {
+        self.money
     }
 
     pub fn change_stock(&mut self, a:u64) {

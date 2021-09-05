@@ -28,20 +28,28 @@ impl Sim {
     // Simulation initialization function
     // nt - number of traders
     pub fn init(&mut self,nt: i32) {
-        for i in 0..nt {
+        for _i in 0..nt {
             let t = Trader::new();
             self.traders.push(t);
         }
     }
     // Main simulation function
     // t - number of time steps
-    pub fn run(&mut self, t: i32) {
-        for d in 0..t {
-            for trader in &self.traders {
-                let action = trader.trader_action();
+    pub fn run(&mut self, days: i32) {
+        for _d in 0..days {
+            for t in self.traders.iter_mut() {
+                let action = t.trader_action();
                 match action {
                     0 => (),    // Do Nothing
-                    1 => (),    // Buy
+                    1 => {
+                        if t.get_money() < self.s_price {
+
+                        } else {
+                            t.buy_stock(self.s_price);
+                            self.s_price += 1;
+                            self.s_quantity -= 1;
+                        }  
+                    },    // Buy
                     2 => (),    // Sell
                     3 => (),    // Trade
                     _ => (),    // Error
@@ -49,4 +57,5 @@ impl Sim {
             }
         }
     }
+
 }

@@ -14,4 +14,5 @@ use crate::sim::Sim;
 fn main() {
     let mut s = Sim::new();
     s.init(5);
+    println!("{:?}",s);
 }
