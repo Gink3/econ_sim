@@ -18,6 +18,7 @@ impl Trader {
     pub fn trader_action(&self) -> i32 {
         let mut rng = rand::thread_rng();
         let num = rng.gen_range(0..4);
+        println!("{}",num);
         num
     }
     pub fn buy_stock(&mut self, p:u64) {
