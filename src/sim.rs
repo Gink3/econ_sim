@@ -50,7 +50,15 @@ impl Sim {
                             self.s_quantity -= 1;
                         }  
                     },    // Buy
-                    2 => (),    // Sell
+                    2 => {
+                        if t.get_stock() < 1 {
+
+                        } else {
+                            t.sell_stock(self.s_price);
+                            self.s_price -= 1;
+                            self.s_quantity += 1;
+                        }
+                    },    // Sell
                     3 => (),    // Trade
                     _ => (),    // Error
                 }
