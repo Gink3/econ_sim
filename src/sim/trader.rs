@@ -3,14 +3,14 @@ use rand::Rng;
 
 #[derive(Debug)]
 pub struct Trader {
-    money: u64,
+    money: f64,
     stock: u64,
 }
 
 impl Trader {
     pub fn new() -> Trader {
         Trader {
-            money: 1000,
+            money: 1000.0,
             stock: 0,
         }
     }
@@ -21,19 +21,21 @@ impl Trader {
         // println!("{}",num);
         num
     }
-    pub fn buy_stock(&mut self, p:u64) {
+    pub fn buy_stock(&mut self, p:f64) {
         self.money -= p;
         self.stock += 1;
     }
 
-    pub fn sell_stock(&mut self, p:u64) {
+    pub fn sell_stock(&mut self, p:f64) {
         self.money += p;
         self.stock -= 1;
     }
-
     // Takes a u32 and adds it to 
-    pub fn get_money(&self) -> u64 {
+    pub fn get_money(&self) -> f64 {
         self.money
+    }
+    pub fn add_money(&mut self, change: f64) {
+        self.money += change;
     }
 
     pub fn get_stock(&self) -> u64 {
