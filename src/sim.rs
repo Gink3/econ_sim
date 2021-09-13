@@ -35,10 +35,10 @@ impl Sim {
     }
     // Main simulation function
     // t - number of time steps
-    pub fn run(&mut self, days: i32) {
+    pub fn run(&mut self, days: i32, dividend_period: i32) {
         for _d in 0..days {
             // TODO add stock dividend payout
-            if _d % 90 == 0 {
+            if _d % dividend_period == 0 {
                 self.payout_dividends(1200, self.s_quantity);
             }
             for t in self.traders.iter_mut() {
