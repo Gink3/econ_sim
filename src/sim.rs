@@ -1,7 +1,8 @@
 
 use rand::Rng;
-
 use std::collections::HashMap;
+use num_format::{Locale, ToFormattedString};
+
 
 mod trader;
 use crate::sim::trader::Trader;
@@ -63,7 +64,6 @@ impl Sim {
                             self.s_quantity += 1;
                         }
                     },    // Sell
-                    3 => (),    // Trade - Feature to be implmented after NN
                     _ => (),    // Error
                 }
             }
@@ -71,7 +71,7 @@ impl Sim {
         for t in self.traders.iter_mut() {
             t.set_trade_freq(days);
         }
-        println!("Days run: {}", days);
+        println!("Days run: {}", days.to_formatted_string(&Locale::en));
     }
 
     // iterates over all traders

@@ -26,9 +26,9 @@ impl Trader {
     
     pub fn trader_action(&self) -> i32 {
         let mut rng = rand::thread_rng();
-        
+        let num = rng.gen_range(0..3);
         // println!("{}",num);
-        rng.gen_range(0..4)
+        num
     }
     pub fn buy_stock(&mut self, p:f64) {
         self.money -= p;
