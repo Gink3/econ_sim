@@ -68,6 +68,10 @@ impl Sim {
                 }
             }
         }
+        for t in self.traders.iter_mut() {
+            t.set_trade_freq(days);
+        }
+        println!("Days run: {}", days);
     }
 
     // iterates over all traders
