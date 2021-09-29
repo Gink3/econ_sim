@@ -2,7 +2,9 @@
 use rand::Rng;
 use std::collections::HashMap;
 use num_format::{Locale, ToFormattedString};
+use serde::Deserialize;
 
+use plotters::prelude::*;
 
 mod trader;
 use crate::sim::trader::Trader;
@@ -11,11 +13,13 @@ use crate::sim::trader::Trader;
 // traders hashmap info
 // traders[0] - money
 // trader[1] - amount of stock owned
-#[derive(Debug)]
+#[derive(Debug, Deserialize)]
 pub struct Sim {
     s_price: f64,
     s_quantity:u64,
     traders: Vec<Trader>,
+    s_history: Vec<f64>,
+    s_max: f64,
 }
 
 impl Sim {
@@ -24,6 +28,8 @@ impl Sim {
             s_price: 100.0,
             s_quantity: 1000,
             traders: Vec::new(),
+            s_history: Vec::new(),
+            s_max: 0.0,
         }
     }
     // Simulation initialization function
@@ -67,10 +73,21 @@ impl Sim {
                     _ => (),    // Error
                 }
             }
+            //End of Day
+
+            // Track end of day price history
+            self.s_history.push(self.s_price);
+
+            // Tracks max price of the stock
+            if self.s_price > self.s_max {
+                self.s_max = self.s_price;
+            }
+            
         }
         for t in self.traders.iter_mut() {
             t.set_trade_freq(days);
         }
+        self.plot_stock_price(days);
         println!("Days run: {}", days.to_formatted_string(&Locale::en));
     }
 
@@ -81,5 +98,33 @@ impl Sim {
         for t in self.traders.iter_mut() {
             t.add_money(t.get_stock() as f64 * profits_per_share);
         }
+    }
+
+    //Plots and illiustrates stock price
+    fn plot_stock_price(&self, days: i32) {
+        let root_area = BitMapBackend::new("images/s_hist.png", (600, 400))
+            .into_drawing_area();
+            root_area.fill(&WHITE).unwrap();
+
+        let margin = self.s_max * 1.1;
+
+        let mut ctx = ChartBuilder::on(&root_area)
+                .set_label_area_size(LabelAreaPosition::Left, 40)
+                .set_label_area_size(LabelAreaPosition::Bottom, 40)
+                .caption("Stock daily close price", ("sans-serif", 40))
+                .build_cartesian_2d(0..days, 50.0..margin)
+                .unwrap();
+
+        ctx.configure_mesh().draw().unwrap();
+
+        ctx.draw_series(
+            LineSeries::new(
+                (0..).zip(self.s_history.iter()).map(|(day, price)| {
+                    (day, *price)
+                }),
+                &RED,
+            )
+            ).unwrap();
+        println!("Succesfully Plotted s_history");
     }
 }

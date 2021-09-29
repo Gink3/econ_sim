@@ -1,12 +1,12 @@
 
 use rand::Rng;
-
+use serde::Deserialize;
 // money - monetary units
 // stock - integer stock values
 // num_t - number of transactions a trader takes
 // trade_freq - how often a trade is made in trades/day
 //
-#[derive(Debug)]
+#[derive(Debug, Deserialize)]
 pub struct Trader {
     money: f64,
     stock: u64,
@@ -26,9 +26,9 @@ impl Trader {
     
     pub fn trader_action(&self) -> i32 {
         let mut rng = rand::thread_rng();
-        let num = rng.gen_range(0..3);
+        
         // println!("{}",num);
-        num
+        rng.gen_range(0..3)
     }
     pub fn buy_stock(&mut self, p:f64) {
         self.money -= p;

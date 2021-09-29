@@ -13,7 +13,7 @@ use crate::sim::Sim;
 
 fn main() {
     let mut s = Sim::new();
-    s.init(5);
-    s.run(100000, 90);
-    println!("{:?}",s);
+    s.init(50);
+    s.run(10000, 90);
+    // println!("{:?}",s);
 }

@@ -14,5 +14,5 @@ Cargo.lock
 
 /target
 
-logs/*
+images/*
 *.dat
